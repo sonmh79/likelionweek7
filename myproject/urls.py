@@ -18,8 +18,11 @@ from django.urls import path
 from board import views as blog
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', blog.home, name="home"),
-    path('blog/<int:id>', blog.post_read, name="post_read"),
-    path('blog/new', blog.post_create, name="post_create"),
+    path("admin/", admin.site.urls),
+    path("", blog.home, name="home"),
+    path("blog/<int:id>", blog.post_read, name="post_read"),
+    path("blog/new", blog.post_create, name="post_create"),
+    path("blog/edit/<int:id>", blog.post_edit, name="post_edit"),
+    path("blog/delete/<int:id>", blog.post_delete, name="post_delete"),
+    path("blog/create/<int:id>", blog.comment_create, name="comment_create"),
 ]

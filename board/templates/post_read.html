@@ -4,4 +4,14 @@
 작성일 : {{data.created}} 최종 수정일 : {{data.modified}}
 <hr />
 <p>{{data.body}}</p>
-<a href="{% url 'post_update' data.id %}">수정하기</a>
+<a href="{%url 'post_edit' data.id%}">글 수정</a>
+<a href="{%url 'post_delete' data.id%}">글 삭제</a>
+	
+<form action = "{%url 'comment_create' data.id%}" method="post">
+    {% csrf_token %}
+    댓글 <input type="text" name="comment">
+    <input type="submit" value="댓글등록">
+</form>
+{% for c in comments %}
+<p>{{c.body}}</p>
+{% endfor %}

@@ -11,7 +11,12 @@ class TimeStampModel(models.Model):
 class Blog(TimeStampModel):
     title = models.CharField(max_length=100)
     body = models.TextField()
-#    image = models.ImageField(upload_to="blog/images/", blank=True, null=True)
+    #    image = models.ImageField(upload_to="blog/images/", blank=True, null=True)
 
     def __str__(self):
         return self.title
+
+
+class Comment(models.Model):
+    body = models.TextField()
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
